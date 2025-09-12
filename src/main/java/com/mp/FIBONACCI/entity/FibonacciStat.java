@@ -7,9 +7,9 @@ import jakarta.persistence.Id;
 public class FibonacciStat {
 
 	@Id
-    private Integer n; // número consultado
+    private Integer n; 
 
-    private Long count; // cantidad de veces consultado
+    private Long count; 
 
     public FibonacciStat() {
     }

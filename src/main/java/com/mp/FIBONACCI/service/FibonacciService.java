@@ -66,7 +66,6 @@ public class FibonacciService {
             	value = prev1.add(prev2);
             }
 
-            System.out.println(i + " - " + value);
             // Guardar en BD
             repository.save(new FibonacciResult(i, value));
 
