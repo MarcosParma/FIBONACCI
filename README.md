@@ -8,11 +8,9 @@
 
 - **Endpoint principal**: GET /api/fibonacci/{n} → devuelve el valor de Fibonacci para n.
 
-	- Devuelve JSON simple con el valor (ej.: 55) o la representación que use tu controller.
+	- Devuelve JSON simple con el valor (ej.: 55).
 
 - **Endpoint de estadísticas**: GET /api/fibonacci/stats → lista las entradas más consultadas.
-
-	- Cada registro tiene al menos n (entero) y count (cantidad de consultas).
 
 - **Cache en BD relacional**: resultados intermedios se guardan en la tabla fibonacci_result para evitar recalcular valores ya resueltos.
 
@@ -20,7 +18,7 @@
 
 - **Algoritmo**: enfoque iterativo y/o incremental: parte desde el mayor n cacheado y calcula solo los términos faltantes (evita recursión exponencial).
 
-- **Tests**: unitarios (servicio), controller (MockMvc) y repository (@DataJpaTest con H2). Cobertura total del proyecto ≥ 80%.
+- **Tests**: unitarios (servicio), controller (MockMvc) y repository (@DataJpaTest con H2).
 
 -------
 
@@ -49,7 +47,7 @@ La aplicación fue dockerizada y desplegada en Render. URLs públicas:
 	- https://fibonacci-omz1.onrender.com/api/fibonacci/{n}
 	- ejemplo: https://fibonacci-omz1.onrender.com/api/fibonacci/10 → 55
 
-###### Nota: la instancia en Render usa la configuración actual (H2 en memoria). Los datos (cache + stats) son volátiles y se pierden al reiniciar el contenedor. Para persistencia, cambiar spring.datasource a una BD externa.
+###### Nota: la instancia en Render usa la configuración actual (H2 en memoria). Los datos (cache + stats) son volátiles y se pierden al reiniciar el contenedor. Para persistencia, cambiar spring.datasource a una BD externa. Tener en cuenta que Render en su version gratuita, deja en reposos los servicios mientras que no se utilizan, por lo que es posible que en el primer intento de consumir el sevricio, demore unos minutos en levantar la imagen y comenzar a responder los servicios. Se recomienda consumir el servicio desde un Navegador, para ver el proceso que ejecuta render al levantar los servicios.
 
 -------
 
